@@ -15,3 +15,11 @@
     </div>
   </div>
 </mat-expansion-panel>
+<div>
+  <span *ngIf="bidList.length">List of bids -</span>
+  <p *ngFor='let bid of bidList'>
+    product id: {{bid.product.productId}} ||
+    product name: {{bid.product.productName}} ||
+    bid amount: {{bid.bidAmount}}
+  </p>
+</div>
