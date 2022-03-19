@@ -15,11 +15,39 @@
     </div>
   </div>
 </mat-expansion-panel>
-<div>
-  <span *ngIf="bidList.length">List of bids -</span>
-  <p *ngFor='let bid of bidList'>
-    product id: {{bid.product.productId}} ||
-    product name: {{bid.product.productName}} ||
-    bid amount: {{bid.bidAmount}}
-  </p>
+<div *ngIf="bidList.length != 0">
+  <table mat-table [dataSource]="bidList" class="c-form">
+    <ng-container matColumnDef="startingPrice">
+      <mat-header-cell *matHeaderCellDef>
+        <h4>Bid Price</h4>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let bid">{{ bid.bidAmount }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="shortDesc">
+      <mat-header-cell *matHeaderCellDef>
+        <h4>Short Description</h4>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let bid">{{ bid.product.shortDescription }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="detailDesc">
+      <mat-header-cell *matHeaderCellDef>
+        <h4>Detail Description</h4>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let bid">{{ bid.product.detailDescription }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef>
+        <h4>Category</h4>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let bid">{{ bid.product.category }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="bidEndDate">
+      <mat-header-cell *matHeaderCellDef>
+        <h4>Bid End Date</h4>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let bid">{{ bid.product.bidEndDate }}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="columnHeader"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnHeader"></mat-row>
+  </table>
 </div>

@@ -10,7 +10,7 @@ export class ApiService {
   private url: string;
 
   constructor(private http: HttpClient) { 
-    this.url='http://localhost:8081/e-auction/api/v1/seller/';
+    this.url='https://7ys8uh3o09.execute-api.us-east-1.amazonaws.com/test/seller';
   }
 
   getAllBidsByProductId(productId: string){
